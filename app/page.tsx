@@ -143,48 +143,30 @@ export default function BoardMeetingPrep() {
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting>(meetings[0]);
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        bgcolor: 'var(--bg-base)',
-        fontFamily: 'var(--font-sans)',
-        overflow: 'hidden',
-      }}
-    >
-      {/* ── Top Bar ── */}
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', bgcolor: 'var(--bg-base)', fontFamily: 'var(--font-sans)' }}>
+
+      {/* ── Page Header Bar ── */}
       <Box
         sx={{
-          bgcolor: 'var(--bg-top)',
           px: 3,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: 56,
+          pt: 2,
+          pb: 1.75,
+          bgcolor: 'var(--bg-surface)',
+          borderBottom: '1px solid var(--border-default)',
           flexShrink: 0,
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
         }}
       >
-        <Stack direction="row" alignItems="center" gap={1.5}>
-          <Box
-            sx={{
-              width: 28,
-              height: 28,
-              bgcolor: 'var(--brand-primary)',
-              borderRadius: 'var(--radius-sm)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}
-          >
-            <Typography sx={{ color: '#fff', fontSize: 12, fontWeight: 700, fontFamily: 'var(--font-sans)' }}>D</Typography>
-          </Box>
-          <Typography sx={{ color: 'var(--text-inverse)', fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600 }}>
-            Diligent Board Intelligence
+        <Box>
+          <Typography sx={{ fontFamily: 'var(--font-sans)', fontSize: 20, fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 }}>
+            Board Meeting Preparation
           </Typography>
-        </Stack>
-
+          <Typography sx={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-secondary)', mt: 0.25 }}>
+            Review upcoming committee meetings, agenda items, and AI-generated briefings
+          </Typography>
+        </Box>
         <Button
           variant="contained"
           size="small"
@@ -196,33 +178,16 @@ export default function BoardMeetingPrep() {
             fontSize: 13,
             px: 2.5,
             py: 0.75,
+            mt: 0.5,
             textTransform: 'none',
             borderRadius: 'var(--radius-md)',
             boxShadow: 'none',
+            flexShrink: 0,
             '&:hover': { bgcolor: 'var(--action-hover)', boxShadow: 'none' },
           }}
         >
           Generate Brief
         </Button>
-      </Box>
-
-      {/* ── Page Sub-header ── */}
-      <Box
-        sx={{
-          px: 3,
-          pt: 2,
-          pb: 1.75,
-          bgcolor: 'var(--bg-surface)',
-          borderBottom: '1px solid var(--border-default)',
-          flexShrink: 0,
-        }}
-      >
-        <Typography sx={{ fontFamily: 'var(--font-sans)', fontSize: 18, fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.3 }}>
-          Board Meeting Preparation
-        </Typography>
-        <Typography sx={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-secondary)', mt: 0.25 }}>
-          Review upcoming committee meetings, agenda items, and AI-generated briefings
-        </Typography>
       </Box>
 
       {/* ── Split Layout ── */}
@@ -387,16 +352,7 @@ export default function BoardMeetingPrep() {
               {selectedMeeting.agenda.map((item, index) => (
                 <Box key={item.id}>
                   {index > 0 && <Divider sx={{ borderColor: 'var(--border-muted)' }} />}
-                  <Box
-                    sx={{
-                      px: 2.5,
-                      py: 1.75,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 2,
-                    }}
-                  >
+                  <Box sx={{ px: 2.5, py: 1.75, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
                     <Stack direction="row" gap={2} alignItems="center" flex={1} minWidth={0}>
                       <Typography
                         sx={{
@@ -454,16 +410,7 @@ export default function BoardMeetingPrep() {
               {selectedMeeting.documents.map((doc, index) => (
                 <Box key={doc.name}>
                   {index > 0 && <Divider sx={{ borderColor: 'var(--border-muted)' }} />}
-                  <Box
-                    sx={{
-                      px: 2.5,
-                      py: 1.75,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      gap: 2,
-                    }}
-                  >
+                  <Box sx={{ px: 2.5, py: 1.75, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 2 }}>
                     <Stack direction="row" gap={1.5} alignItems="center" flex={1} minWidth={0}>
                       <DocTypeTag type={doc.type} />
                       <Typography
